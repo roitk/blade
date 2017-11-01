@@ -28,15 +28,17 @@ playGame.prototype = {
             this.cardsInGame.push(this.makeCard(i));
         }
         this.nextCardIndex = 2;
-        var tween = game.add.tween(this.cardsInGame[0]).to({
-            x: game.width / 2
-        }, 500, Phaser.Easing.Cubic.Out, true);
+//        var tween = game.add.tween(this.cardsInGame[0]).to({
+//            x: game.width / 2
+//        }, 500, Phaser.Easing.Cubic.Out, true);
     },
     makeCard: function(cardIndex) {
-        var card = game.add.sprite(cardIndex*10 + game.width/2, game.height / 2, "cards");
+        var card = game.add.sprite(cardIndex*28, cardIndex*14, "cards");
         card.anchor.set(0.5);
         card.scale.set(gameOptions.cardScale);
         card.frame = this.deck[cardIndex];
+        card.inputEnabled = true;
+        card.input.enableDrag();
         return card;
     },
 }
